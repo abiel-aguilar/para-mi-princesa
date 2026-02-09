@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Nuestra historia</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+      color: #333;
+      overflow: hidden;
+    }
+
+    .scene {
+      display: none;
+      height: 100vh;
+      padding: 40px 20px;
+      text-align: center;
+      animation: fade 0.8s ease;
+    }
+
+    .scene.active {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    p {
+      max-width: 700px;
+      font-size: 1.05rem;
+      line-height: 1.6;
+      margin-bottom: 25px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    button {
+      background: #ff5f7e;
+      color: white;
+      border: none;
+      padding: 12px 22px;
+      border-radius: 30px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    button:hover {
+      background: #ff3f65;
+      transform: scale(1.05);
+    }
+
+    .correct {
+      background: #4caf50;
+    }
+
+    .photo {
+      width: 220px;
+      height: 220px;
+      border-radius: 20px;
+      object-fit: cover;
+      margin-bottom: 20px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    }
+
+    @keyframes fade {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hearts {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .heart {
+      position: absolute;
+      color: rgba(255,255,255,0.7);
+      animation: float 4s linear infinite;
+    }
+
+    @keyframes float {
+      from { transform: translateY(100vh); opacity: 1; }
+      to { transform: translateY(-10vh); opacity: 0; }
+    }
+
+    .collage {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      max-width: 700px;
+    }
+
+    .collage img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 15px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+      transition: transform 0.3s;
+    }
+
+    .collage img:hover {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ESCENA 1 -->
+  <section class="scene active">
+    <h1>Todo comenzó así</h1>
+    <p>
+      Cuando sentía que ya no podía amar a nadie, llegaste tú<br><br>
+      en un momento donde el mundo me hacía creer que yo era el problema,
+      tú me enseñaste que no lo era<br><br>
+      me enseñaste que, aunque tenga errores, aunque a veces tenga poco tiempo,
+      nada de eso importa cuando es la persona correcta<br><br>
+      Tú no solo amaste mi desastre,
+      también decidiste quedarte y ayudarme a intentar arreglarlo,<br><br>
+      yo pensé que ya no sabía amar<br>
+      Y llegaste tú, y me demostraste que aún podía hacerlo.
+    </p>
+    <button onclick="nextScene()">Continuar</button>
+  </section>
+
+  <!-- ESCENA 2 -->
+  <section class="scene">
+    <h1>El día que te conocí</h1>
+    <p>
+      Ese día fue uno de los más felices de mi vida.<br><br>
+      Tenía emoción, nervios y angustia, todo al mismo tiempo.<br>
+      El día que te vi por primera vez entendí lo que es el amor a primera vista.<br><br>
+      la niña mas monita y hermosha de tolas,
+      fue el dia mas feliz que eh tenido por que aparte de haberla conocido
+      hubo aquel primer beso,<br>
+      Ese primer beso que aunque fue rápido,
+      ah sido y sera el beso mas verdadero y bonito que tendre, y jamas lo olvidare.
+    </p>
+    <p><strong>Donde fue nuestro primer beso??</strong></p>
+    <div class="buttons">
+      <button onclick="wrong(this)">Gusanito</button>
+      <button onclick="correct(this)">Las tazas</button>
+      <button onclick="wrong(this)">Columpio volador</button>
+    </div>
+  </section>
+
+  <!-- ESCENA 3 -->
+  <section class="scene">
+    <h1>El momento que más nos marcó</h1>
+    <p>
+      En la rueda de la fortuna todo se detuvo.<br><br>
+      Había miedo, angustia y emociones acumuladas,
+      por que sabiamos que ya nos ibamos a despedir,
+      pero ese momento fue mágico.<br><br>
+      Jamás voy a olvidar cómo me mirabas,
+      cómo te brillaban los ojos.<br><br>
+      y como por un momento me senti pleno y ahi entendi que no quiero a nadie mas
+      solo te quiero a ti, y se que contigo lo tengo todo.
+    </p>
+    <p><strong>Qué juego fue el que más nos marcó??</strong></p>
+    <div class="buttons">
+      <button onclick="wrong(this)">Las tazas</button>
+      <button onclick="correct(this)">Rueda de la fortuna</button>
+    </div>
+  </section>
+
+  <!-- ESCENA 4 -->
+  <section class="scene">
+    <h1>El día de los nervios</h1>
+    <p>
+      El día que conocí a tus papás tenía miedo,
+      pero también sabia que debia hacerlo bien.<br><br>
+      Porque lo que sentía por ti era real.<br><br>
+      y aunque ahorita tengamos que iniciar desde 0 para caerles bien<br>
+      quiero recordarte que.<br>
+      No importa cuántos nervios, o miedo tenga,
+      yo siempre voy a elegirte.
+    </p>
+    <p><strong>como inicie la conversacion con el señor Aaron??</strong></p>
+    <div class="buttons">
+      <button onclick="wrong(this)">le pedi la sal</button>
+      <button onclick="correct(this)">le pedi la coca</button>
+    </div>
+  </section>
+
+  <!-- ESCENA 5 -->
+  <section class="scene">
+    <h1>La pizza</h1>
+    <p>
+      Por que se volvio tan importante la pizza para mi??<br><br>
+      por que investigando descubri que ese hueco que sentiamos en el estomago
+      fue por que fue un beso verdadero fue tanta emocion que 
+      nuestros cuerpos no supieron como rreacionar, generando ese vacio
+       que tratamos de ocultarlo con la pizza
+      las famosas mariposas en el estomago.
+    </p>
+    <p><strong>de que era la pizza??</strong></p>
+    <div class="buttons">
+      <button onclick="wrong(this)">Pepperoni</button>
+      <button onclick="wrong(this)">Hawaiana</button>
+      <button onclick="correct(this)">Campechana</button>
+    </div>
+  </section>
+
+  <!-- ESCENA COLLAGE -->
+  <section class="scene">
+    <h1>Mis fotos favoritas del día que nos conocimos</h1>
+    <p>el mejor dia de mi vida 💕</p>
+    <div class="collage">
+      <img src="fotos/1.jpeg" alt="Foto 1">
+      <img src="fotos/2.jpeg" alt="Foto 2">
+      <img src="fotos/3.jpeg" alt="Foto 3">
+      <img src="fotos/4.jpeg" alt="Foto 4">
+      <img src="fotos/5.jpeg" alt="Foto 5">
+      <img src="fotos/6.jpeg" alt="Foto 6">
+      <img src="fotos/7.jpeg" alt="Foto 7">
+      <img src="fotos/8.jpeg" alt="Foto 8">
+      <img src="fotos/9.jpeg" alt="Foto 9">
+    </div>
+    <button onclick="nextScene()">Continuar</button>
+  </section>
+
+  <!-- ESCENA FINAL -->
+  <section class="scene">
+    <h1>Gracias…</h1>
+    <p>
+      Gracias por quedarte,<br>
+      Por amarme con mis defectos,
+      mis errores y mis enojos.<br><br>
+      Gracias por amar a su viejito<br><br>
+      Te radio mucho, mi Charlie.
+    </p>
+    <h1>Quieres seguir siendo mi novia??</h1>
+    <div class="buttons">
+      <button onclick="showHearts()">no(es un rontundo si, no hay de otra mi amoi, tu y yo hasta viejitos)</button>
+      <button onclick="showHearts()">Claro que si</button>
+    </div>
+  </section>
+
+  <div class="hearts" id="hearts"></div>
+
+    <script>
+    let current = 0;
+    const scenes = document.querySelectorAll('.scene');
+
+    function nextScene() {
+      scenes[current].classList.remove('active');
+      current++;
+      scenes[current].classList.add('active');
+    }
+
+    function correct(btn) {
+      btn.classList.add('correct');
+      setTimeout(nextScene, 600);
+    }
+
+    function wrong(btn) {
+      btn.style.background = '#999';
+    }
+
+    function showHearts() {
+      const container = document.getElementById('hearts');
+      for (let i = 0; i < 30; i++) {
+        const h = document.createElement('div');
+        h.className = 'heart';
+        h.innerHTML = '❤';
+        h.style.left = Math.random() * 100 + 'vw';
+        h.style.fontSize = (15 + Math.random() * 20) + 'px';
+        h.style.animationDuration = (3 + Math.random() * 2) + 's';
+        container.appendChild(h);
+      }
+    }
+  </script>
+
+</body>
+</html>
+
+ 
